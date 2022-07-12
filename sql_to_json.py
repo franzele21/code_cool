@@ -1,3 +1,14 @@
+
+"""
+Langage: Python 3
+This function creates a dict from a sqlite3 database
+Requirements:
+Python3
+sqlite3 module
+create_connection and query from sqlite3_functions.py
+"""
+
+
 def db_to_dict(db_path: str) -> dict|bool:
     """
 This function read all table in a sqlite database, and give back a 
