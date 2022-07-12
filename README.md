@@ -33,3 +33,28 @@ __Parameters__:
  response = query(conn, "SELECT * FROM CarDb WHERE 1;")
  ```
  A `response.fetchall()` can be used to have a list of all element in `response`.
+
+## sql_to_json.py
+### db_to_dict
+A function, that returns a dict from all data in a sqlite3 database.
+__Parameters__: 
+  - _db\_path_: [str] path to the database
+ 
+ __Return__: 
+  - [bool] return `False` if the database doesn't have any table
+  - [dict] if the database has at least one table, all data will be in the form:
+```
+  {
+    "table1": {
+      "1": {...},
+      "2": {...},
+      ...
+    },
+    ...
+  }
+```
+
+
+    
+__Requirements__:
+  - it needs the _create\_connection_ and the _query_ function
