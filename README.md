@@ -1,4 +1,4 @@
-# code_cool
+# cool_code
 code/function that could be used in other project
 
 ## sqlite3_functions.py
