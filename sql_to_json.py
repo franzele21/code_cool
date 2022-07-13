@@ -44,13 +44,16 @@ This programm needs create_connection and query (see https://github.com/franzele
 This is perfect, to save/send a sqlite database into a json form
     """
     conn = create_connection(db_path)
+    # we count the number of table the database has
     table_exists = query(conn, """SELECT count(name) 
                                     FROM sqlite_master 
                                     WHERE type = 'table';
                                 """).fetchall()
 
+    # if it has not 0 table, it continue the program
     if table_exists[0][0] != 0:
         json_data = {}
+        # here we retrieve the names of the tables
         tables_name = query(conn, """SELECT name 
                                         FROM sqlite_master 
                                         WHERE type = 'table' 
@@ -58,11 +61,13 @@ This is perfect, to save/send a sqlite database into a json form
                                     """).fetchall()
         tables_name = [table for list_ in tables_name for table in list_]
         
+        # in this loop, we retrieve the column name of the table
         for table in tables_name:
             json_data[table] = {}
             columns_name = query(conn, f"SELECT * FROM '{table}';")
             columns_name = [description[0] for description in columns_name.description]
             
+            # in the next loop, we retrieve the data of the table
             lines  = query(conn, f"SELECT * FROM '{table}';").fetchall()
             for index, item in enumerate(lines):
                 data = dict(zip(columns_name, item))
@@ -70,4 +75,5 @@ This is perfect, to save/send a sqlite database into a json form
 
         return json_data
     else:
+        # returns False, if the database has 0 table
         return False
