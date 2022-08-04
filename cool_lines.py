@@ -19,6 +19,16 @@ while True:
 
 ####################################################################################################
 
+# get the complement of a number
+n = 5   # bin(5) = 0000 0101
+~n      #       -> 1111 1010
+# /!\ /!\ ~x = -x-1   -> ~5 = -6
+# to have the opposite, add +1 to the complement to the last bit
+n = 21  # 00010101
+n = ~n  # 11101010 = -22
+
+####################################################################################################
+
 # ouput in same line
 print("Hello World!")
 print("Goodbye World!")
