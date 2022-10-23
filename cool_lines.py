@@ -47,3 +47,10 @@ print("Bye Earth!")
 # Output: Bye Earth!d!
 
 ####################################################################################################
+
+# square of 2 using a weird Fibonacci sequence
+def fib(x=0, y=1):
+    while True:
+        x, y = y-x, x+y
+        yield x
+# [1, 0, 2, 0, 4, 0, 8, 0, 16, 0, 32, 0, 64, 0, 128, 0, 256, 0, 512, 0]
